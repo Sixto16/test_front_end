@@ -16,7 +16,7 @@ export interface PeriodicElement {
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'value', 'actions'];
+  displayedColumns: string[] = ['id', 'value', 'nameCountry', 'nameCoin', 'nameState', 'actions'];
 
   dataSource: PeriodicElement[] = [
     {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -75,8 +75,20 @@ export class HomeComponent implements OnInit {
   public getPayments(): void {
     this.paymentsService.getPayments().subscribe({
       next: (data: any) => {
-        this.payments = data;
-        console.log('.....', data)
+        // this.payments = data;
+        // console.log('.....', data)
+        const mapper = data.map((item: any) => {
+          return {
+            nameCountry: item.country?.nombre,
+            nameCoin: item.coin?.nombre,
+            nameState: item.state?.nombre,
+            id: item.id,
+            value: item.value,
+            createAt: item.createAt
+          }
+        })
+        this.payments = mapper;
+        console.log('.....', mapper)
       },
       error: () => {}
     })
@@ -86,7 +98,7 @@ export class HomeComponent implements OnInit {
     this.paymentsService.getStates().subscribe({
       next: (data: any) => {
         this.states = data;
-        console.log('.....', data)
+        // console.log('.....', data)
       },
       error: () => {}
     })
@@ -96,7 +108,7 @@ export class HomeComponent implements OnInit {
     this.paymentsService.getCountries().subscribe({
       next: (data: any) => {
         this.countries = data;
-        console.log('.....', data)
+        // console.log('.....', data)
       },
       error: () => {}
     })
@@ -107,7 +119,7 @@ export class HomeComponent implements OnInit {
       next: (data: any) => {
         this.coins = data;
 
-        console.log('.....', data)
+        // console.log('.....', data)
       },
       error: () => {}
     })
@@ -117,7 +129,7 @@ export class HomeComponent implements OnInit {
     this.paymentsService.deletePayment(id).subscribe({
       next: (data: any) => {
         this.getPayments();
-        console.log('.....', data)
+        // console.log('.....', data)
       },
       error: () => {}
     })
