@@ -1,11 +1,35 @@
+.title {
+    color: #005b8f;
+    padding-left: 1rem;
+}
+
+.subtitle {
+    color: #005b8f;
+    display: flex;
+    justify-content: center;
+}
+
 .form {
     display: flex;
     flex-direction: column;
     width: 30%;
     margin: auto;
+    margin-bottom: 3rem;
 }
 
-.btn {
+.btnfirst {
     display: flex;
     justify-content: right;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
 }
+
+.btnsecond {
+    background-color: #005b8f !important;
+    color: #fff !important;
+}
+
+.btnsecond:hover {
+    background-color: #0077cc !important;  
+}
+
