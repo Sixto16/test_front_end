@@ -16,22 +16,16 @@ export interface PeriodicElement {
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'value', 'nameCountry', 'nameCoin', 'nameState', 'actions'];
+  displayedColumns: string[] = ['id', 'value', 'nameCountry', 'nameCoin', 'nameState', 'createAt', 'actions'];
 
-  dataSource: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'}
-  ];
+  form: FormGroup;
 
-   form: FormGroup;
+  formVisible: boolean;
 
-   formVisible: boolean;
-
-   payments: any[] = [];
-   countries: any[] = [];
-   states: any[] = [];
-   coins: any[] = [];
+  payments: any[] = [];
+  countries: any[] = [];
+  states: any[] = [];
+  coins: any[] = [];
 
   constructor(
     private paymentsService: PaymentsService,
@@ -56,9 +50,15 @@ export class HomeComponent implements OnInit {
     this.formVisible = true;
   }
 
+  public reloadPage(): void {
+    window.location.reload();
+  }
+
   public createPayment(): void {
     const body = {
-      value: this.form.value.value
+      value: this.form.value.value,
+      coin: this.form.value.coin,
+      country: this.form.value.country
     }
 
     console.log('....', this.form.value)

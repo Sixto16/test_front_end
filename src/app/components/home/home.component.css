@@ -1,12 +1,30 @@
+* {
+    --basic-color: #fff;
+    --basic-color-two:#808080;
+    --color-primary: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    --color-button: #005b8f;
+}
+
+menu {
+    padding: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background: var(--color-primary);
+    margin: 20px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+
 .title {
-    color: #005b8f;
-    padding-left: 1rem;
+    color: var(--basic-color);
+    margin-left: 30px;
 }
 
 .subtitle {
-    color: #005b8f;
+    color: var(--color-button);
     display: flex;
     justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .form {
@@ -17,19 +35,31 @@
     margin-bottom: 3rem;
 }
 
-.btnfirst {
+.btn-create-pay {
     display: flex;
-    justify-content: right;
-    padding-bottom: 1rem;
-    padding-right: 1rem;
+    align-items: center; 
+    justify-content: right; 
+    height: 50px;
+    margin: 40px 40px 40px 0px;
 }
 
-.btnsecond {
-    background-color: #005b8f !important;
-    color: #fff !important;
+.btn-pay {
+    background: var(--color-button);
+    color: var(--basic-color) !important;
 }
 
-.btnsecond:hover {
-    background-color: #0077cc !important;  
+.btn-cancel {
+    margin-top: 10px;
+    background: var(--basic-color) !important;
+    color: var(--basic-color-two) !important;
 }
 
+table {
+    padding: 0px 45px 45px 45px;
+    justify-content: center;
+}
+
+.centered-cell {
+    text-align: center;
+    vertical-align: middle;
+}
